@@ -1,6 +1,47 @@
+import { useState } from "react";
+
+interface State {
+  total: string | null;
+  next: string | null;
+  operation: string | null;
+}
+
+const initialState: State = {
+  total: null,
+  next: null,
+  operation: null,
+};
+
+const isNumber = (item: string): boolean => {
+  return /[0-9]+/.test(item);
+};
+
+const calculate = (state: State, name: string): State => {
+  if (name === "AC") {
+    return initialState;
+  }
+
+  if (isNumber(name)) {
+    if (state.next) {
+      const next = state.next === "0" ? name : state.next + name;
+
+      return { ...state, next };
+    }
+
+    return { ...state, next: name };
+  }
+
+  return state;
+};
+
 const App = () => {
+  const [state, setState] = useState<State>(initialState);
+  console.log("STATE: ", state);
+
   const handleClick = (name: string): void => {
-    console.log("HANDLE CLICK: ", name);
+    const newState = calculate(state, name);
+
+    setState(newState);
   };
 
   return (
