@@ -1,12 +1,13 @@
 import "./MovieCard.css";
 
 type MovieProps = {
+  id: string;
   title: string;
   url: string;
   year: string;
 };
 
-const MovieCard = ({ title, url, year }: MovieProps) => {
+const MovieCard = (props: MovieProps) => {
   const handleFavoriteClick = () => {
     console.log("FAVORITE CLICK");
   };
@@ -14,7 +15,7 @@ const MovieCard = ({ title, url, year }: MovieProps) => {
   return (
     <div className="MovieCard">
       <div className="movie-poster">
-        <img src={url} alt={title} />
+        <img src={props.url} alt={props.title} />
         <div className="movie-overlay">
           <button className="favorite-btn" onClick={handleFavoriteClick}>
             🤍
@@ -22,8 +23,8 @@ const MovieCard = ({ title, url, year }: MovieProps) => {
         </div>
       </div>
       <div className="movie-info">
-        <h3>{title}</h3>
-        <p>{year}</p>
+        <h3>{props.title}</h3>
+        <p>{props.year}</p>
       </div>
     </div>
   );
