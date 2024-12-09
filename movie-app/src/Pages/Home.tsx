@@ -16,8 +16,16 @@ const Home = () => {
     },
   ];
 
+  const handleSearch = () => {
+    console.log("Search");
+  };
+
   return (
     <div>
+      <form onSubmit={handleSearch}>
+        <input type="text" placeholder="Search for movies..." />
+        <button type="submit">Search</button>
+      </form>
       <div className="movies-grid">
         {movies.map((movie) => (
           <MovieCard key={movie.id} {...movie} />
