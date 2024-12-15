@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import MovieCard from "../Components/MovieCard";
+import classes from "../css/Home.module.css";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +19,24 @@ const Home = () => {
       url: "https://m.media-amazon.com/images/I/51nbDBJ2h3L._AC_.jpg",
       year: "1997",
     },
+    {
+      id: "3",
+      title: "Encanto",
+      url: "https://m.media-amazon.com/images/I/719lSGJnMxL._AC_SL1287_.jpg",
+      year: "2021",
+    },
+    {
+      id: "4",
+      title: "Oblivion",
+      url: "https://image.tmdb.org/t/p/original/eO3r38fwnhb58M1YgcjQBd3VNcp.jpg",
+      year: "2013",
+    },
+    {
+      id: "5",
+      title: "Vanilla Sky",
+      url: "https://m.media-amazon.com/images/I/51vJpudilhL._AC_.jpg",
+      year: "2001",
+    },
   ];
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,19 +45,22 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSearch}>
+    <div className={classes.home}>
+      <form onSubmit={handleSearch} className={classes.searchForm}>
         <input
           type="text"
+          className={classes.searchInput}
           placeholder="Search for movies..."
           value={searchQuery}
           onChange={(e) => {
             setSearchQuery(e.target.value);
           }}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={classes.searchButton}>
+          Search
+        </button>
       </form>
-      <div className="movies-grid">
+      <div className={classes.moviesGrid}>
         {movies.map(
           (movie) =>
             movie.title.toLowerCase().includes(searchQuery.toLowerCase()) && (

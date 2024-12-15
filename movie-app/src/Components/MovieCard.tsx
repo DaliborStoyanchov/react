@@ -1,4 +1,4 @@
-import "./MovieCard.css";
+import classes from "../css/MovieCard.module.css";
 
 type MovieProps = {
   id: string;
@@ -13,16 +13,16 @@ const MovieCard = (props: MovieProps) => {
   };
 
   return (
-    <div className="MovieCard">
-      <div className="movie-poster">
+    <div className={classes.movieCard}>
+      <div className={classes.moviePoster}>
         <img src={props.url} alt={props.title} />
-        <div className="movie-overlay">
-          <button className="favorite-btn" onClick={handleFavoriteClick}>
+        <div className={classes.movieOverlay}>
+          <button className={classes.favoriteBtn} onClick={handleFavoriteClick}>
             🤍
           </button>
         </div>
       </div>
-      <div className="movie-info">
+      <div className={classes.movieInfo}>
         <h3>{props.title}</h3>
         <p>{props.year}</p>
       </div>
