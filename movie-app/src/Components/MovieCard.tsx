@@ -1,13 +1,15 @@
 import classes from "../css/MovieCard.module.css";
 
 type MovieProps = {
-  id: string;
-  title: string;
-  url: string;
-  year: string;
+  movie: {
+    id: number;
+    title: string;
+    release_date: string;
+    poster_path: string;
+  };
 };
 
-const MovieCard = (props: MovieProps) => {
+const MovieCard = ({ movie }: MovieProps) => {
   const handleFavoriteClick = () => {
     console.log("FAVORITE CLICK");
   };
@@ -15,7 +17,10 @@ const MovieCard = (props: MovieProps) => {
   return (
     <div className={classes.movieCard}>
       <div className={classes.moviePoster}>
-        <img src={props.url} alt={props.title} />
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          alt={movie.title}
+        />
         <div className={classes.movieOverlay}>
           <button className={classes.favoriteBtn} onClick={handleFavoriteClick}>
             🤍
@@ -23,8 +28,8 @@ const MovieCard = (props: MovieProps) => {
         </div>
       </div>
       <div className={classes.movieInfo}>
-        <h3>{props.title}</h3>
-        <p>{props.year}</p>
+        <h3>{movie.title}</h3>
+        <p>{movie.release_date.slice(0, 4)}</p>
       </div>
     </div>
   );
