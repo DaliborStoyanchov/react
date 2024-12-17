@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import MovieCard from "../Components/MovieCard";
 import classes from "../css/Home.module.css";
-import { getPopularMovies } from "../services/api";
+import { getPopularMovies, searchMovies } from "../services/api";
+import NoMoviesFound from "./NoMoviesFound";
 
 type Movie = {
   id: number;
@@ -21,10 +22,9 @@ const Home = () => {
     const loadPopularMovies = async () => {
       try {
         const popularMovies = await getPopularMovies();
-
         setMovies(popularMovies);
-      } catch (error) {
-        console.error("ERROR MSG: ", error);
+      } catch (err) {
+        console.log(err);
         setError("Failed to load movies...");
       } finally {
         setLoading(false);
@@ -34,10 +34,34 @@ const Home = () => {
     loadPopularMovies();
   }, []);
 
-  const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Search: ", searchQuery);
+    if (!searchQuery.trim()) return;
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      const searchResults = await searchMovies(searchQuery);
+      setMovies(searchResults);
+      setError(null);
+    } catch (err) {
+      console.log(err);
+      setError("Failed to search movies...");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const moviesScreen =
+    movies.length === 0 ? (
+      <NoMoviesFound />
+    ) : (
+      <div className={classes.moviesGrid}>
+        {movies.map((movie: Movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
+    );
 
   return (
     <div className={classes.home}>
@@ -47,9 +71,7 @@ const Home = () => {
           className={classes.searchInput}
           placeholder="Search for movies..."
           value={searchQuery}
-          onChange={(e) => {
-            setSearchQuery(e.target.value);
-          }}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
         <button type="submit" className={classes.searchButton}>
           Search
@@ -58,18 +80,7 @@ const Home = () => {
 
       {error && <div>{error}</div>}
 
-      {loading ? (
-        <div>Loading...</div>
-      ) : (
-        <div className={classes.moviesGrid}>
-          {movies.map(
-            (movie: Movie) =>
-              movie.title.toLowerCase().includes(searchQuery.toLowerCase()) && (
-                <MovieCard key={movie.id} movie={movie} />
-              )
-          )}
-        </div>
-      )}
+      {loading ? <div>Loading...</div> : moviesScreen}
     </div>
   );
 };

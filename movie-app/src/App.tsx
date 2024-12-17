@@ -4,6 +4,7 @@ import classes from "./App.module.css";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
 import Navbar from "./Components/Navbar";
+import NoMoviesFound from "./Pages/NoMoviesFound";
 
 const App = () => {
   return (
