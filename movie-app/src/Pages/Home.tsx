@@ -4,13 +4,7 @@ import MovieCard from "../Components/MovieCard";
 import classes from "../css/Home.module.css";
 import { getPopularMovies, searchMovies } from "../services/api";
 import NoMoviesFound from "./NoMoviesFound";
-
-type Movie = {
-  id: number;
-  title: string;
-  release_date: string;
-  poster_path: string;
-};
+import Movie from "../interface/IMovie";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,6 +17,9 @@ const Home = () => {
       try {
         const popularMovies = await getPopularMovies();
         setMovies(popularMovies);
+        console.log(popularMovies[0]);
+        console.log(popularMovies[0].title);
+        console.log(popularMovies[0].id);
       } catch (err) {
         console.log(err);
         setError("Failed to load movies...");

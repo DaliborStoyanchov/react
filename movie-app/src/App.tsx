@@ -4,11 +4,11 @@ import classes from "./App.module.css";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
 import Navbar from "./Components/Navbar";
-import NoMoviesFound from "./Pages/NoMoviesFound";
+import { MovieProvider } from "./contexts/MovieContext";
 
 const App = () => {
   return (
-    <>
+    <MovieProvider>
       <Navbar />
       <main className={classes.mainContent}>
         <Routes>
@@ -16,7 +16,7 @@ const App = () => {
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
-    </>
+    </MovieProvider>
   );
 };
 
