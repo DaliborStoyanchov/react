@@ -1,5 +1,6 @@
 .movieCard {
   position: relative;
+  max-width: 300px;
   border-radius: 8px;
   overflow: hidden;
   background-color: #1a1a1a;
@@ -7,6 +8,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  place-self: center;
 }
 
 .movieCard:hover {

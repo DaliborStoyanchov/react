@@ -48,6 +48,10 @@ a:hover {
   color: #7076f4;
 }
 
+h2 {
+  font-size: 2rem;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
