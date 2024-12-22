@@ -1,3 +1,4 @@
+import Big from "big.js";
 import { useState } from "react";
 
 interface State {
@@ -16,6 +17,33 @@ const isNumber = (item: string): boolean => {
   return /[0-9]+/.test(item);
 };
 
+const operate = (state: State): string => {
+  const one = Big(state.total ?? "0");
+  const two = Big(state.next ?? "0");
+
+  if (state.operation === "+") {
+    return one.plus(two).toString();
+  }
+
+  if (state.operation === "-") {
+    return one.minus(two).toString();
+  }
+
+  if (state.operation === "*") {
+    return one.times(two).toString();
+  }
+
+  if (state.operation === "/") {
+    if (state.next === "0") {
+      return "ERROR";
+    } else {
+      return one.div(two).toString();
+    }
+  }
+
+  throw new Error(`Unknown operator ${state.operation}`);
+};
+
 const calculate = (state: State, name: string): State => {
   if (name === "AC") {
     return initialState;
@@ -31,11 +59,28 @@ const calculate = (state: State, name: string): State => {
     return { ...state, next: name };
   }
 
-  return state;
+  if (name === "=") {
+    if (state.next && state.operation) {
+      return {
+        total: operate(state),
+        next: null,
+        operation: null,
+      };
+    } else {
+      return state;
+    }
+  }
+
+  return {
+    total: state.next,
+    next: null,
+    operation: name,
+  };
 };
 
 const App = () => {
   const [state, setState] = useState<State>(initialState);
+
   console.log("STATE: ", state);
 
   const handleClick = (name: string): void => {
