@@ -29,7 +29,7 @@ const operate = (state: State): string => {
     return one.minus(two).toString();
   }
 
-  if (state.operation === "*") {
+  if (state.operation === "X") {
     return one.times(two).toString();
   }
 
@@ -44,26 +44,26 @@ const operate = (state: State): string => {
   throw new Error(`Unknown operator ${state.operation}`);
 };
 
-const calculate = (state: State, name: string): State => {
-  if (name === "AC") {
+const calculate = (state: State, operandName: string): State => {
+  if (operandName === "AC") {
     return initialState;
   }
 
-  if (isNumber(name)) {
+  if (isNumber(operandName)) {
     if (state.next) {
-      const next = state.next === "0" ? name : state.next + name;
+      const next = state.next === "0" ? operandName : state.next + operandName;
 
       return { ...state, next };
     }
 
-    return { ...state, next: name };
+    return { ...state, next: operandName };
   }
 
-  if (name === "=") {
+  if (operandName === "=") {
     if (state.next && state.operation) {
       return {
         total: operate(state),
-        next: null,
+        next: operate(state),
         operation: null,
       };
     } else {
@@ -71,10 +71,47 @@ const calculate = (state: State, name: string): State => {
     }
   }
 
+  if (operandName === ".") {
+    if (!state.next) {
+      return {
+        ...state,
+        next: "0.",
+      };
+    }
+
+    if (state.next.includes(".")) {
+      return state;
+    }
+
+    return {
+      ...state,
+      next: state.next + ".",
+    };
+  }
+
+  if (operandName === "%") {
+    console.log("% is pressed");
+
+    return initialState;
+  }
+
+  if (operandName === "C") {
+    console.log("C is pressed");
+    return initialState;
+  }
+
+  if (state.operation) {
+    return {
+      total: operate(state),
+      next: null,
+      operation: operandName,
+    };
+  }
+
   return {
     total: state.next,
     next: null,
-    operation: name,
+    operation: operandName,
   };
 };
 
@@ -96,7 +133,7 @@ const App = () => {
         <div className="display">0</div>
       </div>
       <div className="button-panel">
-        <button className="button" onClick={() => handleClick("AC")}>
+        <button onClick={() => handleClick("AC")} className="button">
           AC
         </button>
         <button onClick={() => handleClick("C")} className="button">
@@ -119,7 +156,7 @@ const App = () => {
           9
         </button>
         <button onClick={() => handleClick("X")} className="button operation">
-          x
+          X
         </button>
 
         <button onClick={() => handleClick("4")} className="button">
@@ -147,7 +184,7 @@ const App = () => {
         <button onClick={() => handleClick("+")} className="button operation">
           +
         </button>
-        <button onClick={() => handleClick("0")} className="button col-span">
+        <button onClick={() => handleClick("0")} className="button">
           0
         </button>
         <button onClick={() => handleClick(".")} className="button">
