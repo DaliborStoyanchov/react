@@ -90,14 +90,47 @@ const calculate = (state: State, operandName: string): State => {
   }
 
   if (operandName === "%") {
-    console.log("% is pressed");
+    if (!state.next) {
+      return state;
+    }
 
-    return initialState;
+    return {
+      ...state,
+      next: Big(state.next).div(Big("100")).toString(),
+    };
   }
 
   if (operandName === "C") {
-    console.log("C is pressed");
-    return initialState;
+    if (state.total && state.next === null && state.operation) {
+      if (state.operation) {
+        return {
+          ...state,
+          operation: null,
+        };
+      }
+    } else if (state.total === "0" && state.next === null && state.operation) {
+      return {
+        ...state,
+        operation: null,
+      };
+    } else if (state.next) {
+      if (state.next.length > 0) {
+        if (state.next.length === 1) {
+          return {
+            ...state,
+            next: null,
+          };
+        }
+        return {
+          ...state,
+          next: state.next.slice(0, -1),
+        };
+      } else {
+        return state;
+      }
+    }
+
+    return state;
   }
 
   if (state.operation) {
@@ -109,7 +142,7 @@ const calculate = (state: State, operandName: string): State => {
   }
 
   return {
-    total: state.next,
+    total: !state.total ? state.next : state.total,
     next: null,
     operation: operandName,
   };
