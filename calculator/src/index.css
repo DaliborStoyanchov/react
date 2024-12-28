@@ -29,17 +29,6 @@ body {
   bottom: -1rem;
 }
 
-.operation-screen {
-  padding: 0.5rem 1rem;
-  bottom: 4.5rem;
-  font-size: 2rem;
-  color: #798fba;
-  font-weight: 500;
-  position: absolute;
-  bottom: 5rem;
-  right: 0;
-}
-
 .display {
   padding: 0.5rem 1rem;
   bottom: 1rem;

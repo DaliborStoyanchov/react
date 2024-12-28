@@ -1,5 +1,5 @@
 import Big from "big.js";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface State {
   total: string | null;
@@ -151,7 +151,28 @@ const calculate = (state: State, operandName: string): State => {
 const App = () => {
   const [state, setState] = useState<State>(initialState);
 
-  console.log("STATE: ", state);
+  const textRef = useRef<HTMLDivElement>(null);
+  const calcRef = useRef<HTMLDivElement>(null);
+
+  const display = state.next || state.total || "0";
+
+  useEffect(() => {
+    const adjustFontSize = () => {
+      const textEl = textRef.current!;
+      const calcEl = calcRef.current!;
+
+      let fontSize = 60;
+
+      textEl.style.fontSize = `${fontSize}px`;
+
+      while (textEl.scrollWidth > calcEl.scrollWidth && fontSize > 10) {
+        fontSize--;
+        textEl.style.fontSize = `${fontSize}px`;
+      }
+    };
+
+    adjustFontSize();
+  }, [display]);
 
   const handleClick = (name: string): void => {
     const newState = calculate(state, name);
@@ -160,10 +181,11 @@ const App = () => {
   };
 
   return (
-    <div className="calculator">
+    <div ref={calcRef} className="calculator">
       <div className="screen">
-        <div className="operation-screen">0</div>
-        <div className="display">0</div>
+        <div className="display" ref={textRef}>
+          {display}
+        </div>
       </div>
       <div className="button-panel">
         <button onClick={() => handleClick("AC")} className="button">
