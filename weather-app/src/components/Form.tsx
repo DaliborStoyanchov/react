@@ -1,13 +1,17 @@
 import Button from "./Button.tsx";
 import Input from "./Input.tsx";
 
+type FormProps = {
+  onChange: (e: any) => void;
+};
+
 const handleLocationSearch = () => {};
 
-const Form = () => {
+const Form = ({ onChange }: FormProps) => {
   return (
     <form onSubmit={handleLocationSearch} className="space-y-4">
-      <Input type="text" placeholder="Latitude" />
-      <Input type="text" placeholder="Longitude" />
+      <Input name="latitude" placeholder="Latitude" onChange={onChange} />
+      <Input name="longitude" placeholder="Longitude" onChange={onChange} />
       <Button text="Search" />
     </form>
   );
