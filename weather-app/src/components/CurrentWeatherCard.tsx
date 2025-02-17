@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 type CurrentWeatherCardProps = {
   weatherData: {
     temp: number;
@@ -9,6 +11,40 @@ type CurrentWeatherCardProps = {
 };
 
 const CurrentWeatherCard = ({ weatherData }: CurrentWeatherCardProps) => {
+  const [times, setTimes] = useState({
+    currentDate: "",
+    currentTime: "",
+    sunriseTime: "",
+    sunsetTime: "",
+  });
+
+  useEffect(() => {
+    let currentDateObject = new Date(weatherData.dt * 1000);
+    let currentSunriseDateObject = new Date(weatherData.sunrise * 1000);
+    let currentSunsetDateObject = new Date(weatherData.sunset * 1000);
+
+    let currentDateString = currentDateObject.toString();
+    let currentSunriseDateString = currentSunriseDateObject.toString();
+    let currentSunsetDateString = currentSunsetDateObject.toString();
+
+    let currentTime = currentDateString.substring(16, 24);
+    let currentDate =
+      currentDateString.substring(0, 3) +
+      ", " +
+      currentDateString.substring(4, 15);
+
+    let sunriseTime = currentSunriseDateString.substring(16, 24);
+    let sunsetTime = currentSunsetDateString.substring(16, 24);
+
+    setTimes({
+      ...times,
+      currentDate,
+      currentTime,
+      sunriseTime,
+      sunsetTime,
+    });
+  }, []);
+
   return (
     <div className="bg-white shadow-lg rounded-lg min-w-96">
       <div className="bg-blue-500 text-white text-center py-4">
@@ -18,11 +54,11 @@ const CurrentWeatherCard = ({ weatherData }: CurrentWeatherCardProps) => {
         <ul className="space-y-2">
           <li className="flex justify-between">
             <span>Current Date: </span>
-            <span>{weatherData.dt}</span>
+            <span>{times.currentDate}</span>
           </li>
           <li className="flex justify-between">
             <span>Current Time: </span>
-            <span>{weatherData.dt}</span>
+            <span>{times.currentTime}</span>
           </li>
           <li className="flex justify-between">
             <span>Temperature: </span>
@@ -34,11 +70,11 @@ const CurrentWeatherCard = ({ weatherData }: CurrentWeatherCardProps) => {
           </li>
           <li className="flex justify-between">
             <span>Sunrise: </span>
-            <span>{weatherData.sunrise}</span>
+            <span>{times.sunriseTime}</span>
           </li>
           <li className="flex justify-between">
             <span>Sunset: </span>
-            <span>{weatherData.sunset}</span>
+            <span>{times.sunsetTime}</span>
           </li>
         </ul>
       </div>
