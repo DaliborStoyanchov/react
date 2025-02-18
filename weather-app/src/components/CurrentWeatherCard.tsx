@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+type Weather = {
+  main: string;
+  description: string;
+};
+
 type CurrentWeatherCardProps = {
   weatherData: {
     temp: number;
@@ -7,10 +12,15 @@ type CurrentWeatherCardProps = {
     dt: number;
     sunrise: number;
     sunset: number;
+    weather: Weather[];
   };
+  timezone: string;
 };
 
-const CurrentWeatherCard = ({ weatherData }: CurrentWeatherCardProps) => {
+const CurrentWeatherCard = ({
+  weatherData,
+  timezone,
+}: CurrentWeatherCardProps) => {
   const [times, setTimes] = useState({
     currentDate: "",
     currentTime: "",
@@ -51,6 +61,15 @@ const CurrentWeatherCard = ({ weatherData }: CurrentWeatherCardProps) => {
         <h2 className="font-semibold">Current Weather Information</h2>
       </div>
       <div className="p-6">
+        <div className="text-center mb-4">
+          <p className="text-xl font-medium text-gray-700">
+            {weatherData.weather[0].main}
+          </p>
+          <p className=" text-gray-500 capitalize">
+            {weatherData.weather[0].description}
+          </p>
+          <p className=" text-gray-500">{timezone}</p>
+        </div>
         <ul className="space-y-2">
           <li className="flex justify-between">
             <span>Current Date: </span>

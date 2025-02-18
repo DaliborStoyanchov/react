@@ -5,15 +5,30 @@ import CurrentWeatherCard from "./components/CurrentWeatherCard";
 
 const API_KEY = "651ceb7b7263ff6bcd065c9d935b4cc2";
 
+const initialData = {
+  temp: 20.5,
+  feels_like: 19.8,
+  dt: 1645624400,
+  sunrise: 1645605600,
+  sunset: 1645646400,
+  weather: [
+    {
+      main: "Clear",
+      description: "clear sky",
+    },
+  ],
+};
+
 const App = () => {
   const [coordinates, setCoordinates] = useState({
     latitude: 0,
     longitude: 0,
   });
-  const [currentData, setCurrentData] = useState({});
+  const [currentData, setCurrentData] = useState(initialData);
   const [hourlyData, setHourlyData] = useState([]);
   const [dailyData, setDailyData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [timezone, setTimezone] = useState("");
 
   const handleLocationSearch = async (e: any) => {
     e.preventDefault();
@@ -23,8 +38,10 @@ const App = () => {
     `);
 
     setCurrentData(response.data.current);
+
     setHourlyData(response.data.hourly);
     setDailyData(response.data.daily);
+    setTimezone(response.data.timezone);
     setLoading(false);
   };
 
@@ -41,8 +58,9 @@ const App = () => {
           handleLocationSearch={handleLocationSearch}
         />
       </div>
-      {/* {!loading && <CurrentWeatherCard weatherData={currentData} />} */}
-      <CurrentWeatherCard weatherData={currentData} />
+      {!loading && (
+        <CurrentWeatherCard weatherData={currentData} timezone={timezone} />
+      )}
     </div>
   );
 };
