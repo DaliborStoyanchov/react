@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 type Weather = {
   main: string;
   description: string;
+  icon: string;
 };
 
 type CurrentWeatherCardProps = {
@@ -61,6 +62,15 @@ const CurrentWeatherCard = ({
         <h2 className="font-semibold">Current Weather Information</h2>
       </div>
       <div className="p-6">
+        <div className="flex justify-center mb-4">
+          <div className="bg-blue-100 rounded-full p-2">
+            <img
+              className="w-20 h-2"
+              src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`}
+              alt="Weather Icon"
+            />
+          </div>
+        </div>
         <div className="text-center mb-4">
           <p className="text-xl font-medium text-gray-700">
             {weatherData.weather[0].main}

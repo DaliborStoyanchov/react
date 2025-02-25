@@ -15,6 +15,7 @@ const initialData = {
     {
       main: "Clear",
       description: "clear sky",
+      icon: "icon",
     },
   ],
 };
@@ -25,8 +26,6 @@ const App = () => {
     longitude: 0,
   });
   const [currentData, setCurrentData] = useState(initialData);
-  const [hourlyData, setHourlyData] = useState([]);
-  const [dailyData, setDailyData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [timezone, setTimezone] = useState("");
 
@@ -38,9 +37,6 @@ const App = () => {
     `);
 
     setCurrentData(response.data.current);
-
-    setHourlyData(response.data.hourly);
-    setDailyData(response.data.daily);
     setTimezone(response.data.timezone);
     setLoading(false);
   };
@@ -59,7 +55,14 @@ const App = () => {
         />
       </div>
       {!loading && (
-        <CurrentWeatherCard weatherData={currentData} timezone={timezone} />
+        <>
+          <div className="mt-16">
+            <h2 className="text-2xl font-semibold text-gray-800 text-center mb-4">
+              Current Weather
+            </h2>
+            <CurrentWeatherCard weatherData={currentData} timezone={timezone} />
+          </div>
+        </>
       )}
     </div>
   );
