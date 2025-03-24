@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./RandomColor.module.css";
 
 export default function RandomColor() {
@@ -26,7 +26,21 @@ export default function RandomColor() {
 
   function createRandomRgbColor() {
     console.log("Random RGB color is being created...");
+
+    const r = randomColorUtility(256);
+    const g = randomColorUtility(256);
+    const b = randomColorUtility(256);
+
+    const rgbColor = `rgb(${r}, ${g}, ${b})`;
+
+    console.log(rgbColor);
+
+    setColor(rgbColor);
   }
+
+  useEffect(() => {
+    typeOfColor === "rgb" ? createRandomRgbColor() : createRandomHexColor();
+  }, [typeOfColor]);
 
   return (
     <div
@@ -48,6 +62,20 @@ export default function RandomColor() {
       >
         Generate Random Color
       </button>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "#fff",
+          fontSize: "2rem",
+          paddingTop: "2rem",
+        }}
+      >
+        <h3>{typeOfColor === "rgb" ? "RGB Color:" : "HEX Color:"}</h3>
+        <h3>{color}</h3>
+      </div>
     </div>
   );
 }
