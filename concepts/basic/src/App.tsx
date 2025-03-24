@@ -5,7 +5,7 @@ import RandomColor from "./components/RandomColor/RandomColor";
 const App = () => {
   return (
     <>
-      <main>
+      <main style={{ display: "flex", flexDirection: "column" }}>
         {/* <Accordion /> */}
         <RandomColor />
       </main>

@@ -1,0 +1,7 @@
+button {
+  width: 200px;
+  margin-inline: auto;
+  margin-top: 4px;
+  padding: 4px;
+  cursor: pointer;
+}
