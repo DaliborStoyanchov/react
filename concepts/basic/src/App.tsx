@@ -1,13 +1,15 @@
 // import Accordion from "./components/Accordion/Accordion";
+// import RandomColor from "./components/RandomColor/RandomColor";
 
-import RandomColor from "./components/RandomColor/RandomColor";
+import StarRating from "./components/StarRating/StarRating";
 
 const App = () => {
   return (
     <>
-      <main style={{ display: "flex", flexDirection: "column" }}>
+      <main style={{}}>
         {/* <Accordion /> */}
-        <RandomColor />
+        {/* <RandomColor /> */}
+        <StarRating />
       </main>
     </>
   );
