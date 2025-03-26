@@ -9,7 +9,7 @@ const App = () => {
       <main style={{}}>
         {/* <Accordion /> */}
         {/* <RandomColor /> */}
-        <StarRating />
+        <StarRating numberOfStars={10} />
       </main>
     </>
   );
