@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
 import classes from "./ImageSlider.module.css";
 
 type ImageSliderProps = {
@@ -25,7 +26,7 @@ export default function ImageSlider({
 
       if (data) {
         setImages(data);
-        setLoading(true);
+        setLoading(false);
       }
     } catch (error: any) {
       console.error("Error");
@@ -39,8 +40,6 @@ export default function ImageSlider({
     if (url !== "") fetchImages(url);
   }, [url]);
 
-  console.log(images);
-
   if (loading) {
     return <div>Loading data, please wait...</div>;
   }
@@ -51,10 +50,32 @@ export default function ImageSlider({
     }
   }
 
+  function handleClick() {}
+
   return (
     <div className={classes.container}>
-      <h2>Image Slider</h2>
-      <p>Lorem ipsum dolor sit.</p>
+      <BsArrowLeftCircleFill className="arrow arrow-left" />
+      {images && images.length
+        ? images.map((imageItem) => (
+            <img
+              key={imageItem.id}
+              alt={imageItem.download_url}
+              src={imageItem.download_url}
+              className="current-image"
+            />
+          ))
+        : null}
+      <BsArrowRightCircleFill
+        className="arrow arrow-right"
+        onClick={handleClick}
+      />
+      <span>
+        {images && images.length
+          ? images.map((_, index) => (
+              <button key={index} className="current-indicator"></button>
+            ))
+          : null}
+      </span>
     </div>
   );
 }
