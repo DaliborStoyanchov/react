@@ -32,6 +32,10 @@ button {
   transition: border-color 0.25s;
   margin-block: 20px;
 }
+button:disabled {
+  display: none;
+}
+
 button:hover {
   border-color: #646cff;
 }

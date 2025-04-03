@@ -5,6 +5,7 @@ export default function LoadMore() {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [count, setCount] = useState(0);
+  const [disableButton, setDisableButton] = useState(false);
 
   async function fetchProducts() {
     try {
@@ -24,7 +25,7 @@ export default function LoadMore() {
 
       console.log(result);
     } catch (error) {
-      console.log(error);
+      console.log("DAC:", error);
       setLoading(false);
     }
   }
@@ -32,6 +33,10 @@ export default function LoadMore() {
   useEffect(() => {
     fetchProducts();
   }, [count]);
+
+  useEffect(() => {
+    if (products && products.length === 100) setDisableButton(true);
+  }, [products]);
 
   if (loading) {
     return (
@@ -56,9 +61,12 @@ export default function LoadMore() {
             : null}
         </div>
         <div className={styles.buttonContainer}>
-          <button onClick={() => setCount(count + 1)}>
+          <button onClick={() => setCount(count + 1)} disabled={disableButton}>
             Load More Products
           </button>
+          {disableButton ? (
+            <p>You have reached the limit of 100 products</p>
+          ) : null}
         </div>
       </div>
     </>
