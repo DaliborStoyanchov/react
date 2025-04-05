@@ -19,6 +19,7 @@
   height: 2rem;
   color: #fff;
   filter: drop-shadow(0 0 5px #555);
+  cursor: pointer;
 }
 
 .arrowLeft {
@@ -44,4 +45,12 @@
   outline: none;
   margin: 0 0.2rem;
   cursor: pointer;
+}
+
+.hideCurrentImage {
+  display: none;
+}
+
+.inactiveIndicator {
+  background-color: #6666669d;
 }
