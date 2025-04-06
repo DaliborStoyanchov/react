@@ -1,4 +1,4 @@
-const menus = [
+export const menus = [
   {
     label: "Home",
     to: "/",
