@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  & input {
+    padding: 1rem;
+  }
+
+  & button {
+    margin-block: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: large;
+  }
+}
