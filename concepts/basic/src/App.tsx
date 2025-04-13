@@ -4,10 +4,9 @@
 // import ImageSlider from "./components/ImageSlider/ImageSlider";
 // import menus from "./components/TreeView/data";
 // import TreeView from "./components/TreeView/TreeView";
-
-import ThemeChange from "./components/ThemeChange/ThemeChange";
-
+// import ThemeChange from "./components/ThemeChange/ThemeChange";
 // import QrCodeGen from "./components/QrCodeGen/QrCodeGen";
+import ScrollIndicator from "./components/ScrollIndicator/ScrollIndicator";
 
 const App = () => {
   return (
@@ -19,7 +18,8 @@ const App = () => {
         {/* <ImageSlider url={"https://picsum.photos/v2"} limit={"5"} page={"1"} /> */}
         {/* <TreeView menus={menus} /> */}
         {/* <QrCodeGen /> */}
-        <ThemeChange />
+        {/* <ThemeChange /> */}
+        <ScrollIndicator />
       </main>
     </>
   );
