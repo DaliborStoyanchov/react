@@ -19,7 +19,7 @@ const App = () => {
         {/* <TreeView menus={menus} /> */}
         {/* <QrCodeGen /> */}
         {/* <ThemeChange /> */}
-        <ScrollIndicator />
+        <ScrollIndicator url="https://www.dummyjson.com/products?limit=100" />
       </main>
     </>
   );
