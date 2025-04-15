@@ -6,7 +6,8 @@
 // import TreeView from "./components/TreeView/TreeView";
 // import ThemeChange from "./components/ThemeChange/ThemeChange";
 // import QrCodeGen from "./components/QrCodeGen/QrCodeGen";
-import ScrollIndicator from "./components/ScrollIndicator/ScrollIndicator";
+// import ScrollIndicator from "./components/ScrollIndicator/ScrollIndicator";
+import TabTest from "./components/Tabs/TabTest";
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
         {/* <TreeView menus={menus} /> */}
         {/* <QrCodeGen /> */}
         {/* <ThemeChange /> */}
-        <ScrollIndicator url="https://www.dummyjson.com/products?limit=100" />
+        {/* <ScrollIndicator url="https://www.dummyjson.com/products?limit=100" /> */}
+        <TabTest />
       </main>
     </>
   );
