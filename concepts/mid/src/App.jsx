@@ -1,6 +1,6 @@
 // import LoadMore from "./components/LoadMore/LoadMore";
 
-import Modal from "./components/Modal/Modal";
+import ModalTest from "./components/Modal/ModalTest";
 
 function App() {
   return (
