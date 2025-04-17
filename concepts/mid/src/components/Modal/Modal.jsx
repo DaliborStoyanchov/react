@@ -2,12 +2,14 @@ import React from "react";
 
 import classes from "./Modal.module.css";
 
-const Modal = ({ id, header, body, footer }) => {
+const Modal = ({ id, header, body, footer, onClose }) => {
   return (
-    <div id={id || "Modal"} className={classes.modalContent}>
-      <div className={classes.content}>
+    <div id={id || "Modal"} className={classes.modal}>
+      <div className={classes.modalContent}>
         <div className={classes.header}>
-          <span className={classes.closeModalIcon}>&times;</span>
+          <span onClick={onClose} className={classes.closeModalIcon}>
+            &times;
+          </span>
           <h2>{header ? header : "Header"}</h2>
         </div>
         <div className={classes.body}>

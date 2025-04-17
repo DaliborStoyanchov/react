@@ -1,0 +1,45 @@
+.modal {
+  position: fixed;
+  z-index: 1;
+  padding-top: 150px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #00000087;
+}
+
+.modalContent {
+  position: relative;
+  background: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid red;
+  width: 80%;
+  animation-name: animateModal;
+  animation-duration: 0.5s;
+
+  & > * {
+    padding-inline: 2rem;
+  }
+}
+
+.closeModalIcon {
+  cursor: pointer;
+  font-size: 24px;
+  float: right;
+  font-weight: bold;
+}
+
+@keyframes animateModal {
+  from {
+    top: -200px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
