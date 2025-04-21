@@ -3,11 +3,13 @@ import classes from "./GitHubProfileFinder.module.css";
 import User from "./User";
 
 function GitHubProfileFinder() {
-  const [userName, setUserName] = useState("DaliborStoyanchov");
+  const [userName, setUserName] = useState("daliborstoyanchov");
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    fetchUserGithubData();
+  }
 
   async function fetchUserGithubData() {
     setIsLoading(true);
@@ -18,9 +20,10 @@ function GitHubProfileFinder() {
 
     if (data) {
       setUserData(data);
+      setIsLoading(false);
     }
 
-    setIsLoading(false);
+    console.log(data);
   }
 
   useEffect(() => {
