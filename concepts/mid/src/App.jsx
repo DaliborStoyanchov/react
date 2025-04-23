@@ -1,7 +1,7 @@
 // import LoadMore from "./components/LoadMore/LoadMore";
 // import ModalTest from "./components/Modal/ModalTest";
 // import GitHubProfileFinder from "./components/GitHubProfileFinder/GitHubProfileFinder";
-import SearchAutoComplete from "./components/SearchAutoComplete/SearchAutoComplete";
+import SearchAutocompleteAPI from "./components/SearchAutocompleteAPI/SearchAutocompleteAPI";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       {/* <LoadMore /> */}
       {/* <ModalTest /> */}
       {/* <GitHubProfileFinder /> */}
-      <SearchAutoComplete />
+      <SearchAutocompleteAPI />
     </>
   );
 }
