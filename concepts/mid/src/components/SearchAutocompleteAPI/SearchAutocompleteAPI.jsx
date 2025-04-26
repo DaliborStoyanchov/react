@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import classes from "./SearchAutocompleteAPI.module.css";
+import Suggestions from "./Suggestions";
 
 const URL = "https://dummyjson.com/users";
 
@@ -51,18 +51,28 @@ const SearchAutocompleteAPI = () => {
     fetchListOfUsers(URL);
   }, []);
 
-  console.log(users);
-  console.log(filteredUsers);
+  function handleClick(e) {
+    setShowDropdown(false);
+    setSearchParams(e.target.innerText);
+    setFilteredUsers([]);
+  }
 
   return (
-    <div className={classes.searchAutoCompleteContainer}>
-      <input
-        type="text"
-        name="users"
-        value={searchParams}
-        placeholder="Search users here..."
-        onChange={handleChange}
-      />
+    <div>
+      {loading ? (
+        <h2>Loading data, please wait</h2>
+      ) : (
+        <input
+          type="text"
+          name="users"
+          value={searchParams}
+          placeholder="Search users here..."
+          onChange={handleChange}
+        />
+      )}
+      {showDropdown && (
+        <Suggestions handleClick={handleClick} data={filteredUsers} />
+      )}
     </div>
   );
 };
