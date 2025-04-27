@@ -1,7 +1,8 @@
 // import LoadMore from "./components/LoadMore/LoadMore";
 // import ModalTest from "./components/Modal/ModalTest";
 // import GitHubProfileFinder from "./components/GitHubProfileFinder/GitHubProfileFinder";
-import SearchAutocompleteAPI from "./components/SearchAutocompleteAPI/SearchAutocompleteAPI";
+// import SearchAutocompleteAPI from "./components/SearchAutocompleteAPI/SearchAutocompleteAPI";
+import TikTakToe from "./components/TikTakToe/TikTakToe";
 
 function App() {
   return (
@@ -9,7 +10,8 @@ function App() {
       {/* <LoadMore /> */}
       {/* <ModalTest /> */}
       {/* <GitHubProfileFinder /> */}
-      <SearchAutocompleteAPI />
+      {/* <SearchAutocompleteAPI /> */}
+      <TikTakToe />
     </>
   );
 }
