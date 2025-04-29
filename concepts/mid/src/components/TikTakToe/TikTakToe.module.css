@@ -1,7 +1,5 @@
 .container {
-  clear: both;
-  content: "";
-  display: table;
+  margin-top: 50px;
 }
 
 .square {
