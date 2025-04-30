@@ -12,6 +12,7 @@ function Square({ value, onClick }) {
 export function TikTakToe() {
   const [squares, setSquares] = useState(Array(9).fill(""));
   const [isXTurn, setIsXTurn] = useState(true);
+  const [status, setStatus] = useState("");
 
   function getWinner(squares) {
     const winningPatterns = [
@@ -50,7 +51,20 @@ export function TikTakToe() {
     setSquares(cpySquares);
   }
 
-  useEffect(() => {}, [squares, isXTurn]);
+  function handleRestart() {
+    setIsXTurn(true);
+    setSquares(Array(9).fill(""));
+  }
+
+  useEffect(() => {
+    if (!getWinner(squares) && squares.every((item) => item !== "")) {
+      setStatus(`This is a draw! Please restart the game`);
+    } else if (getWinner(squares)) {
+      setStatus(`Winner is ${getWinner(squares)}`);
+    } else {
+      setStatus(`Next player is ${isXTurn ? "X" : "o"}`);
+    }
+  }, [squares, isXTurn]);
 
   console.log(squares);
 
@@ -71,6 +85,8 @@ export function TikTakToe() {
         <Square value={squares[7]} onClick={() => handleClick(7)} />
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div>
+      <h4 className={module.status}>{status}</h4>
+      <button onClick={handleRestart}>Restart</button>
     </div>
   );
 }

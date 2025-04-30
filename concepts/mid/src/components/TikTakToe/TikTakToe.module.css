@@ -14,3 +14,9 @@
   margin-top: -1px;
   cursor: pointer;
 }
+
+.status {
+  font-weight: 300;
+  font-size: small;
+  line-height: 4;
+}
