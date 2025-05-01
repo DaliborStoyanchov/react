@@ -2,7 +2,7 @@
 // import ModalTest from "./components/Modal/ModalTest";
 // import GitHubProfileFinder from "./components/GitHubProfileFinder/GitHubProfileFinder";
 // import SearchAutocompleteAPI from "./components/SearchAutocompleteAPI/SearchAutocompleteAPI";
-import TikTakToe from "./components/TikTakToe/TikTakToe";
+// import TikTakToe from "./components/TikTakToe/TikTakToe";
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       {/* <ModalTest /> */}
       {/* <GitHubProfileFinder /> */}
       {/* <SearchAutocompleteAPI /> */}
-      <TikTakToe />
+      {/* <TikTakToe /> */}
     </>
   );
 }
