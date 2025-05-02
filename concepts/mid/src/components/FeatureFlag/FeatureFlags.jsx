@@ -27,7 +27,9 @@ const FeatureFlags = () => {
   return (
     <div>
       <h1>Feature Flags</h1>
-      {componentsToRender.map((item) => checkEnabledFlags(item.key))}
+      {componentsToRender.map((item) =>
+        checkEnabledFlags(item.key) ? item.component : null
+      )}
     </div>
   );
 };
