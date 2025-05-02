@@ -4,6 +4,9 @@
 // import SearchAutocompleteAPI from "./components/SearchAutocompleteAPI/SearchAutocompleteAPI";
 // import TikTakToe from "./components/TikTakToe/TikTakToe";
 
+import FeatureFlagGlobalState from "./components/FeatureFlag/context/FeatureFlagContext";
+import FeatureFlags from "./components/FeatureFlag/FeatureFlags";
+
 function App() {
   return (
     <>
@@ -12,6 +15,9 @@ function App() {
       {/* <GitHubProfileFinder /> */}
       {/* <SearchAutocompleteAPI /> */}
       {/* <TikTakToe /> */}
+      <FeatureFlagGlobalState>
+        <FeatureFlags />
+      </FeatureFlagGlobalState>
     </>
   );
 }
