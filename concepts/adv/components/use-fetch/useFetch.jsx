@@ -21,9 +21,9 @@ export default function useFetch(url, options = {}) {
 
       setIsLoading(false);
     } catch (error) {
-      console.log(`ERROR OCCURRED: ${error}.`);
+      console.log(`ERROR OCCURRED! ${error}.`);
 
-      setError(`ERROR OCCURRED: ${error}.`);
+      setError(`ERROR OCCURRED! ${error}.`);
       setIsLoading(false);
     }
   }
