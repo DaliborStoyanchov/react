@@ -1,10 +1,12 @@
-import UseFetchHookTest from "../components/use-fetch/UseFetchHookTest";
+// import UseFetchHookTest from "../components/use-fetch/UseFetchHookTest";
+import UseOutsideClickTest from "../components/use-outside-click/UseOutsideClickTest";
 
 export default function App() {
   return (
     <div>
       <h1>APP</h1>
-      <UseFetchHookTest />
+      {/* <UseFetchHookTest /> */}
+      <UseOutsideClickTest />
     </div>
   );
 }
