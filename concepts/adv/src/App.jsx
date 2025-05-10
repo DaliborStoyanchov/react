@@ -1,12 +1,15 @@
 // import UseFetchHookTest from "../components/use-fetch/UseFetchHookTest";
-import UseOutsideClickTest from "../components/use-outside-click/UseOutsideClickTest";
+// import UseOutsideClickTest from "../components/use-outside-click/UseOutsideClickTest";
+
+import UseWindowResizeTest from "../components/use-window-resize/UseWindowResizeTest";
 
 export default function App() {
   return (
     <div>
       <h1>APP</h1>
       {/* <UseFetchHookTest /> */}
-      <UseOutsideClickTest />
+      {/* <UseOutsideClickTest /> */}
+      <UseWindowResizeTest />
     </div>
   );
 }
