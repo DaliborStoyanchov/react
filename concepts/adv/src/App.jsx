@@ -1,8 +1,9 @@
 // import UseFetchHookTest from "../components/use-fetch/UseFetchHookTest";
 // import UseOutsideClickTest from "../components/use-outside-click/UseOutsideClickTest";
 // import UseWindowResizeTest from "../components/use-window-resize/UseWindowResizeTest";
+// import ScrollToBottomAndTop from "../components/scroll-bottom-top/ScrollToBottomAndTop";
 
-import ScrollToBottomAndTop from "../components/scroll-bottom-top/ScrollToBottomAndTop";
+import ScrollToSection from "../components/scroll-bottom-top/ScrollToSection";
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
       {/* <UseFetchHookTest /> */}
       {/* <UseOutsideClickTest /> */}
       {/* <UseWindowResizeTest /> */}
-      <ScrollToBottomAndTop />
+      {/* <ScrollToBottomAndTop /> */}
+      <ScrollToSection />
     </div>
   );
 }
