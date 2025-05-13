@@ -2,8 +2,9 @@
 // import UseOutsideClickTest from "../components/use-outside-click/UseOutsideClickTest";
 // import UseWindowResizeTest from "../components/use-window-resize/UseWindowResizeTest";
 // import ScrollToBottomAndTop from "../components/scroll-bottom-top/ScrollToBottomAndTop";
+// import ScrollToSection from "../components/scroll-bottom-top/ScrollToSection";
 
-import ScrollToSection from "../components/scroll-bottom-top/ScrollToSection";
+import Weather from "../components/weather-app/components/weather/Weather";
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
       {/* <UseOutsideClickTest /> */}
       {/* <UseWindowResizeTest /> */}
       {/* <ScrollToBottomAndTop /> */}
-      <ScrollToSection />
+      {/* <ScrollToSection /> */}
+      <Weather />
     </div>
   );
 }
