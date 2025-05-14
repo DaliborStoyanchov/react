@@ -1,0 +1,18 @@
+.searchEngine {
+  background-color: rgba(0, 110, 255, 0.253);
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+
+  & > * {
+    margin: 0.5rem auto;
+  }
+}
+.citySearch {
+  padding: 1rem;
+  width: 50%;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
