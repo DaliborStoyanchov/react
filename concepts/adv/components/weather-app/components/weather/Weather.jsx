@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../search/Search";
 
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -10,6 +10,8 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   async function fetchWeatherData(param) {
+    setIsLoading(true);
+
     try {
       const res = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}`
@@ -18,8 +20,14 @@ const Weather = () => {
       const data = await res.json();
 
       console.log(data);
+
+      if (data) {
+        setIsLoading(false);
+        setWeatherData(data);
+      }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
       setError(error);
     }
   }
@@ -28,6 +36,8 @@ const Weather = () => {
     fetchWeatherData(search);
   }
 
+  useEffect(() => {}, []);
+
   return (
     <div>
       <Search
@@ -35,7 +45,8 @@ const Weather = () => {
         setSearch={setSearch}
         handleSearch={handleSearch}
       />
-      Weather
+      {isLoading && <h3>Loading...</h3>}
+      {weatherData ? <p>{weatherData.name}</p> : <p>Enter City Name</p>}
     </div>
   );
 };
