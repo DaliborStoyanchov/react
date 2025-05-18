@@ -71,6 +71,28 @@ const Weather = () => {
           <div className={classes.date}>
             <span>{getCurrentDate()}</span>
           </div>
+          <div>
+            {Math.round(weatherData?.main?.temp - 270)} <sup>o</sup>C{" "}
+          </div>
+          <p className={classes.desctiption}>
+            {weatherData && weatherData.weather && weatherData.weather[0]
+              ? weatherData.weather[0].description
+              : ""}
+          </p>
+          <div className={classes.weatherInfo}>
+            <div>
+              <div>
+                <p className={classes.wind}>{weatherData?.wind?.speed} m/h</p>
+                <p>Wind Speed</p>
+              </div>
+              <div>
+                <p className={classes.humidity}>
+                  {weatherData?.main?.humidity + "%"}
+                </p>
+                <p>Humidity</p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
