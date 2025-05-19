@@ -58,23 +58,23 @@ const Weather = () => {
         setSearch={setSearch}
         handleSearch={handleSearch}
       />
-      {error && <p>{error}</p>}
+      {error && <p>Error occurred. Try again later. ERROR: {error}</p>}
       {isLoading ? (
         <h3>Loading...</h3>
       ) : (
-        <div>
+        <div className={classes.container}>
           <div className={classes.cityName}>
-            <h3>
+            <h2>
               {weatherData?.name + ","} <span>{weatherData?.sys?.country}</span>
-            </h3>
+            </h2>
           </div>
           <div className={classes.date}>
             <span>{getCurrentDate()}</span>
           </div>
-          <div>
+          <div className={classes.temp}>
             {Math.round(weatherData?.main?.temp - 270)} <sup>o</sup>C{" "}
           </div>
-          <p className={classes.desctiption}>
+          <p className={classes.description}>
             {weatherData && weatherData.weather && weatherData.weather[0]
               ? weatherData.weather[0].description
               : ""}
