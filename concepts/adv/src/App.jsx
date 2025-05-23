@@ -14,7 +14,6 @@ import Details from "../components/food-recepies/pages/details/Details";
 export default function App() {
   return (
     <div>
-      <h1 className="px-18">APP</h1>
       {/* <UseFetchHookTest /> */}
       {/* <UseOutsideClickTest /> */}
       {/* <UseWindowResizeTest /> */}
