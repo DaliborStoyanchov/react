@@ -4,7 +4,13 @@ const RecipeItem = ({ item }) => {
   return (
     <div className="flex flex-col w-80 overflow-hidden p-5 bg-white/75 shadow-xl gap-5 border-2 rounded-2xl border-white">
       <div className="h-40 flex justify-center overflow-hidden items-center rounded-xl ">
-        <img src={item?.image_url} alt="food image" className="block w-full" />
+        <Link to={`/recipe-item/${item?.recipe_id}`}>
+          <img
+            src={item?.image_url}
+            alt="food image"
+            className="block w-full hover:cursor-pointer"
+          />
+        </Link>
       </div>
       <div>
         <span className="text-sm text-cyan-700 font-medium">
@@ -13,7 +19,12 @@ const RecipeItem = ({ item }) => {
         <h3 className="font-bold text-2xl truncate text-black">
           {item?.title}
         </h3>
-        <Link to={`/RecipeItem/${item?.id}`}>Recipe Details</Link>
+        <Link
+          to={`/recipe-item/${item?.recipe_id}`}
+          className="text-sm mt-5 p-3 px-8 rounded-lg uppercase font-medium tracking-wider inline-block shadow-md  bg-black  text-white"
+        >
+          Recipe Details
+        </Link>
       </div>
     </div>
   );
