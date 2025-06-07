@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-export const GlobalContext = createContext(null);
+const GlobalContext = createContext(null);
 
 const GlobalState = ({ children }) => {
   const [searchParam, setSearchParam] = useState("");
@@ -36,7 +36,7 @@ const GlobalState = ({ children }) => {
     let cpyFavoritesList = [...favoritesList];
 
     const index = cpyFavoritesList.findIndex(
-      (item) => item.id === getCurrentItem.id
+      (item) => item.id === getCurrentItem.recipe_id
     );
 
     if (index === -1) {
@@ -44,7 +44,11 @@ const GlobalState = ({ children }) => {
     } else {
       cpyFavoritesList.splice(index);
     }
+
+    setFavoritesList(cpyFavoritesList);
   }
+
+  console.log(favoritesList);
 
   return (
     <GlobalContext.Provider
@@ -57,6 +61,8 @@ const GlobalState = ({ children }) => {
         recipeDetailsData,
         setRecipeDetailsData,
         handleAddToFavorite,
+        favoritesList,
+        setFavoritesList,
       }}
     >
       {children}
@@ -64,4 +70,5 @@ const GlobalState = ({ children }) => {
   );
 };
 
+export { GlobalContext };
 export default GlobalState;
