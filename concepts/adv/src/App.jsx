@@ -8,6 +8,7 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../components/e-commerce/pages/home";
 import Cart from "../components/e-commerce/pages/cart";
+import Header from "../components/e-commerce/components/header";
 // import Navbar from "../components/food-recepies/components/Navbar/Navbar";
 // import Favorites from "../components/food-recepies/pages/favorites/Favorites";
 // import Home from "../components/food-recepies/pages/home/Home";
@@ -15,7 +16,7 @@ import Cart from "../components/e-commerce/pages/cart";
 
 export default function App() {
   return (
-    <div>
+    <div className="mx-6 lg:mx-22">
       {/* <UseFetchHookTest /> */}
       {/* <UseOutsideClickTest /> */}
       {/* <UseWindowResizeTest /> */}
@@ -30,7 +31,7 @@ export default function App() {
           <Route path="/recipe-item/:id" element={<Details />} />
         </Routes>
       </div> */}
-      <h1>NAVBAR</h1>
+      <Header />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/cart" element={<Cart />} />
