@@ -16,7 +16,7 @@ import Header from "../components/e-commerce/components/header";
 
 export default function App() {
   return (
-    <div className="mx-6 lg:mx-22">
+    <div className="mx-16 lg:mx-22">
       {/* <UseFetchHookTest /> */}
       {/* <UseOutsideClickTest /> */}
       {/* <UseWindowResizeTest /> */}

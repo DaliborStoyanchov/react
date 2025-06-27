@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { MoonLoader } from "react-spinners";
+import ProductTile from "../components/product-tile";
+
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,15 +23,21 @@ export default function Home() {
     fetchListOfProducts();
   }, []);
 
-  if (isLoading) {
-    <h2>Loading...</h2>;
-  }
-
   return (
     <div>
-      {products.map((i) => (
-        <p>{i.title}</p>
-      ))}
+      {isLoading ? (
+        <div className="min-h-screen w-full flex justify-center items-center">
+          <MoonLoader />
+        </div>
+      ) : (
+        <div className="min-h-[80vh] grid sm:grid-cols-2 md:grid-cols-3 space-x-5 space-y-10 lg:grid-cols-4 max-w-6xl mx-auto p-3">
+          {products && products.length
+            ? products.map((productItem) => (
+                <ProductTile product={productItem} />
+              ))
+            : null}
+        </div>
+      )}
     </div>
   );
 }
