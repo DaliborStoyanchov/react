@@ -5,9 +5,19 @@ export default function ProductTile({ product }) {
         <div className="h-[180px]">
           <img
             className="object-cover h-full w-full"
-            src={product.image}
-            alt={product.title}
+            src={product?.image}
+            alt={product?.title}
           />
+        </div>
+        <div>
+          <h1 className="w-40 truncate mt-3 text-gray-700 font-bold text-lg">
+            {product?.title}
+          </h1>
+        </div>
+        <div className="flex items-center justify-center w-full mt-5">
+          <button className="bg-blue-500 text-white border-2 rounded-lg font-bold p-4 cursor-pointer">
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
