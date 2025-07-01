@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 // import GlobalState from "../components/food-recepies/context/index.jsx";
 import { Provider } from "react-redux";
-import store from "../components/e-commerce/store";
+import store from "../components/e-commerce/store/store.js";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
