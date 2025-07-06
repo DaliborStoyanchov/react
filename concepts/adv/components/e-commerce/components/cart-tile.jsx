@@ -1,11 +1,17 @@
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../store/slices/cart-slice";
+
 const CartTile = ({ cartItem }) => {
+  const dispatch = useDispatch();
+
   function handleRemoveFromCart() {
     console.log("Removed");
+    dispatch(removeFromCart(cartItem.id));
   }
 
   return (
     <>
-      <div className="flex flex-col items-center p-5 justify-between mb-2 mt-2 border-1 rounded w-100">
+      <div className="flex flex-col items-center p-5 justify-between mb-2 mt-2 border-1 rounded w-120">
         <div className="flex p-3">
           <img src={cartItem?.image} alt={cartItem?.title} className="h-28" />
           <div className="ml-10 self-start space-y-5">

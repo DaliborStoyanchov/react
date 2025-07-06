@@ -15,17 +15,17 @@ export default function Cart() {
   console.log(cart, totalCart);
 
   return (
-    <div>
+    <div className="flex justify-center">
       {cart && cart.length ? (
         <>
-          <div className="min-h-[80vh] grid md:grid-cols-2 max-w-6xl mx-auto">
+          <div className="min-h-[80vh] grid md:grid-cols-1 max-w-6xl mx-auto">
             <div className="flex flex-col justify-center items-center p-2">
               {cart.map((cartItem, index) => (
                 <CartTile cartItem={cartItem} key={index} />
               ))}
             </div>
           </div>
-          <div>
+          <div className="w-[300px]">
             <div className="flex flex-col justify-center items-end p-5 space-y-5 mt-14">
               <h1 className="font-bold text-lg">Your Cart Summary</h1>
               <p>
@@ -34,7 +34,9 @@ export default function Cart() {
               </p>
               <p>
                 <span className="text-gray-800 font-bold">Total Amount</span>
-                <span className="text-gray-800 font-bold">: {cart.length}</span>
+                <span className="text-gray-800 font-bold">
+                  : ${totalCart.toFixed(2)}
+                </span>
               </p>
             </div>
           </div>
