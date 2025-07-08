@@ -6,9 +6,9 @@
 // import Weather from "../components/weather-app/components/weather/Weather";
 
 import { Routes, Route } from "react-router-dom";
-import Home from "../components/e-commerce/pages/home";
-import Cart from "../components/e-commerce/pages/cart";
-import Header from "../components/e-commerce/components/header";
+// import Home from "../components/e-commerce/pages/home";
+// import Cart from "../components/e-commerce/pages/cart";
+// import Header from "../components/e-commerce/components/header";
 // import Navbar from "../components/food-recepies/components/Navbar/Navbar";
 // import Favorites from "../components/food-recepies/pages/favorites/Favorites";
 // import Home from "../components/food-recepies/pages/home/Home";
