@@ -8,16 +8,16 @@ import App from "./App.jsx";
 import store from "../components/e-commerce/store/store.js";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme.js";
-import GlobalState from "../components/expences-tracker/context/context.jsx";
+// import GlobalState from "../components/expences-tracker/context/context.jsx";
 
 createRoot(document.getElementById("root")).render(
   // <Provider store={store}>
   // <BrowserRouter>
-  <GlobalState>
-    <ChakraProvider theme={theme}>
-      <App />
-    </ChakraProvider>
-  </GlobalState>
+  // <GlobalState>
+  <ChakraProvider theme={theme}>
+    <App />
+  </ChakraProvider>
+  // </GlobalState>
   // </BrowserRouter>
   // </Provider>
 );
